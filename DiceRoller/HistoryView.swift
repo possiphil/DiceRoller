@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct HistoryView: View {
+    let history: [Roll]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(history) { history in
+                HStack {
+                    Text("Result: \(history.result)")
+                    
+                    Spacer()
+                    
+                    Text("Rolls: \(history.rolls.joined(separator: ", "))")
+                }
+            }
+        }
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        HistoryView(history: [Roll.example])
     }
 }
